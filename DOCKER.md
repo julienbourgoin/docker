@@ -1,0 +1,6 @@
+- gliderlabs/registrator : Registrator automatically registers and deregisters services for any Docker container by inspecting containers as they come online.
+- dind : Docker-in-Docker for CI
+- docker-slim :  pour optimiser la taille d'une image
+- terraform : pour l'installation du SI
+- vamp : pour la gestion des release (https://vamp.io/)
+- ehazlett/interlock : Docker Event Driven Plugin System
