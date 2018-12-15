@@ -4,7 +4,9 @@ docker version
 ```
 
 # ======= Mon premier container ========
+```shell
 docker run hello-world
+```
 # Il s'est passé quoi ?
 ```shell
 docker images
@@ -13,7 +15,7 @@ docker pull hello-world
 ```
 
 # De quoi est fait hello-world ?
-#https://github.com/docker-library/hello-world/blob/master/amd64/hello-world/Dockerfile
+https://github.com/docker-library/hello-world/blob/master/amd64/hello-world/Dockerfile
 ```Dockerfile
 FROM scratch
 COPY hello /
@@ -63,6 +65,26 @@ docker search nginx
 ```Dockerfile
 FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/
+```
+
+Le fichier index.html
+```html
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Docker for life!</h1>
+<p><em>index.html</em></p>
+</body>
+</html>
 ```
 
 ```shell
