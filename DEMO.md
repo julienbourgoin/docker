@@ -44,11 +44,17 @@ docker run alpine touch /tmp/mon-fichier.txt
 docker run alpine ls /tmp
 docker ps -a
 docker diff <id container>
+```
 
+![LayersModifs](/images/layers-modifs.png)
+
+```shell
 docker commit <id container> alpine-modifiee
 docker images
 docker history alpine-modifiee
 ```
+![LayersCommit](/images/layers-commit.png)
+
 ## Sauvegarde d'une image
 ```shell
 docker save -o alpine-modifiee.tar alpine-modifiee
