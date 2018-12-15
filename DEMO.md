@@ -63,7 +63,7 @@ cd build
 docker search nginx
 ```
 
-```Dockerfile.step1
+```Dockerfile
 FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/
 ```
@@ -95,5 +95,39 @@ docker history nginx-demo
 ```
 
 
+## Utilisation des builds multi-stage
+Permet de s'absoudre des tout l'environnement de build dans l'image finale, et ne conserver que l'application compilée. Voici un exemple en Golang.
 
+hello.go
+```golang
+package main
 
+import "fmt"
+
+func main() {
+	fmt.Println("Hello world!")
+}
+```
+
+```Dockerfile
+# build stage
+FROM golang:alpine AS build-env
+RUN mkdir /src
+ADD hello.go /src
+RUN cd /src && go build -o goapp
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/goapp /app/
+ENTRYPOINT ./goapp
+```
+Lancement de la construction de l'image docker
+```shell
+cd multistage-build
+docker build -f Dockerfile -t multistage/hello .
+docker run --rm multistage/hello
+docker history multistage/hello
+docker images
+```
+L'image golang:alpine fait 287Mo, quand l'image finale de l'application fait 5,71Mo
