@@ -1,8 +1,7 @@
 # Affichage de la version de docker (client et serveur)
 docker version
 
-# ======= Concept de CONTAINER ========
-# Premier lancement de container
+# ======= Mon premier container ========
 docker run hello-world
 # Il s'est passé quoi ?
 docker images
@@ -17,34 +16,43 @@ COPY hello /
 CMD ["/hello"]
 ```
 
+# ======= Concept de CONTAINER ========
+## Présentation des système de fichier en couche (UnionFS, AuFS, Btrfs, zfs, overlay, overlay2, devicemapper)
 
-# ======= Concept d'IMAGES ========
-
-# Pull d'une image
+## Pull d'une image
 docker pull alpine:3.8
 
-# Création d'une image
-docker build -f Dockerfile -t alpine-demo .
-
-# Liste des images en cache local
-docker images
-
-# Lancement d'un container basé sur notre image
-docker run alpine-demo ls /tmp
-
-# Lancement d'un container basé sur notre image avec une console TTY
-docker run -ti alpine-demo
-/ # ls /tmp
-mon-fichier.txt
-/ # touch /tmp/test.txt
-
-# Création d'une nouvelle image à partir d'un container
+## Lancement d'un container basé sur l'image alpine:3.8
+docker run alpine ls /
 docker ps -a
-docker commit <id container> alpine-demo-modifiee
-docker run alpine-demo-modifiee ls /tmp
+docker run -it alpine
 
-# Sauvegarde d'une image
-docker save -o alpine-demo-modifiee.tar alpine-demo-modifiee
+## Modifications dans un container et commit dans une image
+docker run alpine touch /tmp/mon-fichier.txt
+docker run alpine ls /tmp
+docker ps -a
+docker diff <id container>
+
+docker commit <id container> alpine-modifiee
+docker images
+docker history alpine-modifiee
+## Sauvegarde d'une image
+docker save -o alpine-modifiee.tar alpine-modifiee
+mkdir alpine-modifiee
+tar xvf alpine-modifiee.tar -C alpine-modifiee
+ll alpine-modifiee
+
+## Création d'une image à partir d'un Dockerfile
+cd build
+docker search nginx
+```Dockerfile
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/
+```
+docker build -f Dockerfile -t nginx-demo .
+docker run -d -p 88:80 nginx-demo
+docker history nginx-demo
+
 
 
 
