@@ -21,7 +21,7 @@ FROM scratch
 COPY hello /
 CMD ["/hello"]
 ```
-![Layers](/layers.png)
+![Layers](/images/layers.png)
 
 # ======= Concept de CONTAINER ========
 ## Présentation des système de fichier en couche (UnionFS, AuFS, Btrfs, zfs, overlay, overlay2, devicemapper)
