@@ -63,7 +63,7 @@ cd build
 docker search nginx
 ```
 
-```Dockerfile
+```Dockerfile.step1
 FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/
 ```
@@ -89,7 +89,7 @@ Le fichier index.html
 ```
 
 ```shell
-docker build -f Dockerfile -t nginx-demo .
+docker build -f Dockerfile.step1 -t nginx-demo .
 docker run -d -p 88:80 nginx-demo
 docker history nginx-demo
 ```
