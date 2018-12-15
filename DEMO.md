@@ -4,9 +4,9 @@ docker version
 # ======= Mon premier container ========
 docker run hello-world
 # Il s'est passé quoi ?
-docker images
-docker ps -a
-docker pull hello-world
+ docker images
+ docker ps -a
+ docker pull hello-world
 
 # De quoi est fait hello-world ?
 #https://github.com/docker-library/hello-world/blob/master/amd64/hello-world/Dockerfile
