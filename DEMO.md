@@ -35,7 +35,7 @@ CMD ["/hello"]
 ![Layers](/images/layers.png)
 
 # D'ou vient l'image hello-world ?
-## DockerHub : la registry de Docker Inc.
+# ======= DockerHub : la registry de Docker Inc. ========
 https://hub.docker.com/_/hello-world
 
 - Repository public d'images docker, et registry par defaut lors de l'installation de docker.
