@@ -235,3 +235,49 @@ Il existe d'autres outils que Docker pour construire des images :
 
 - JIB : utilisable depuis Maven, Gradle ou encore en java (https://github.com/GoogleContainerTools/jib)
 - ...
+
+# La face cachée de Docker : le réseau
+
+## Ports et redirection de port
+
+```shell
+docker run -d -p 88:80 nginx-demo
+```
+On ne peut pas lancer deux fois cette commande, car `Bind for 0.0.0.0:88 failed: port is already allocated.`
+
+Le container nginx de tout à l'heure tourne encore en tâche de fond, et monopolise le port 88 de la machine hôte sur son interface eth0, on ne peut donc pas en lancer un autre.
+
+```shell
+docker network ls
+```
+Le réseau nommé bridge fait le pont entre l'interface réseau eth0 et docker0 sur la machine hôte.
+
+```shell
+docker run -d -p 89:80 nginx-demo
+```
+On peut cependant changer de port (le 89 par exemple) et toujours rediriger dans le container sur le port 80.
+
+## Réseaux docker
+Il existe plusieurs types de réseau sous docker
+- none : attaché à un container, celui-ci ne possèdera aucune interface réseau
+- host : attaché à un container, celui-ci ne sera pas isolé et sera directement attaché à eth0
+- bridge : créé un réseau isolé. tout container attaqué à ce réseau pourra voir un autre container de ce même réseau. il peut en exister plusieur par machine
+- overlay : réseau prévu pour exister sur plusieurs machines. nécessite une base clé valeur (type etcd)
+
+```shell
+docker network create -d bridge my-bridge-network
+```
+
+```shell
+docker run --rm alpine ifconfig
+docker run --rm --network none alpine ifconfig
+docker run --rm --network my-bridge-network alpine ifconfig
+```
+
+Il est possible de linker des containers ensembles :
+
+```shell
+docker run --name some-mongo -d mongo:latest
+docker run -it --link some-mongo:mongo --rm mongo mongo --host mongo test
+```
+Cela aura pour effet de TODO
