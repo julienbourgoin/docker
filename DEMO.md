@@ -23,6 +23,29 @@ CMD ["/hello"]
 ```
 ![Layers](/images/layers.png)
 
+# D'ou vient l'image hello-world ?
+## DockerHub : la registry de Docker Inc.
+https://hub.docker.com/_/hello-world
+
+- Repository public d'images docker, et registry par defaut lors de l'installation de docker.
+- Propose à tous détenteur de comptes de pouvoir uploader ses propres images, de façon public ou privée.
+- Système de notation communautaire.
+- Branchement avec GitHub et BitBucket.
+
+
+La recherche d'image est disponibles en ligne de commande :
+```shell
+docker search nginx
+```
+
+On récupère des images existantes simplement avec la commande `docker pull nginx`
+
+On push des images personnelles sur son espace simplement avec la commande `docker push mon-espace/mon-image`
+
+On se loggue sur une registry docker avec la commande `docker login`
+
+L'utilisation de registry autre que DockerHub est évidement possible (registry interne à l'entreprise ou cloud)
+
 # ======= Concept de CONTAINER ========
 
 Une image est un ensemble de layers en lecture seule, plus des metadonnées
@@ -77,12 +100,6 @@ ll alpine-modifiee
 ```shell
 cd build
 ```
-
-On commence par rechercher une image existante :
-```shell
-docker search nginx
-```
-ou bien en se rendant sur la registry Docker : https://hub.docker.com/_/nginx/
 
 ```Dockerfile
 FROM nginx:alpine
