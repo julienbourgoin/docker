@@ -62,6 +62,9 @@ docker history alpine-modifiee
 ```
 ![LayersCommit](/images/layers-commit.png)
 
+Chaque layer contient le différentiel par rapport aux layers sous jacentes.
+Si l'on modifie le fichier `/etc/passwd`, la layer ne contiendra pas le fichier entier, mais seulment le patch.
+
 ## Sauvegarde d'une image
 ```shell
 docker save -o alpine-modifiee.tar alpine-modifiee
