@@ -111,13 +111,19 @@ docker history nginx-demo
 ```
 ## Anatomie d'un Dockerfile
 
-`FROM` : indique de quelle image l'on part
-`COPY` : copie un fichier depuis le contexte de build vers l'image finale
-`RUN`  : execute une commande lors du build de l'image
-`ENTRYPOINT` : défini la commande executée lors du démarrage d'un container basé sur cette image
-`CMD` : permet de donner des valeurs par défaut à l'ENTRYPOINT
-`ENV` : défini une variable d'environnement, disponible pour le build mais aussi lors de l'exécution du container
-`VOLUME` : permet d'indiquer l'utilisation d'un volume docker à l'exécution
+`FROM`: indique de quelle image l'on part
+
+`COPY`: copie un fichier depuis le contexte de build vers l'image finale
+
+`RUN`: execute une commande lors du build de l'image
+
+`ENTRYPOINT`: défini la commande executée lors du démarrage d'un container basé sur cette image
+
+`CMD`: permet de donner des valeurs par défaut à l'ENTRYPOINT
+
+`ENV`: défini une variable d'environnement, disponible pour le build mais aussi lors de l'exécution du container
+
+`VOLUME`: permet d'indiquer l'utilisation d'un volume docker à l'exécution
 
 
 ## Utilisation des builds multi-stage
