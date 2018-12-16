@@ -281,3 +281,10 @@ docker run --name some-mongo -d mongo:latest
 docker run -it --link some-mongo:mongo --rm mongo mongo --host mongo test
 ```
 Cela aura pour effet de TODO
+
+
+# Le point noir de Docker : la persistance des données
+
+Ecrire des données dans la layer en écriture d'un container n'est pas pérenne du tout !
+
+## Utilisation de volumes
