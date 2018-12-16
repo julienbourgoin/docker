@@ -125,6 +125,7 @@ docker history nginx-demo
 
 `VOLUME`: permet d'indiquer l'utilisation d'un volume docker à l'exécution
 
+`EXPOSE`: permet d'indiquer explicitement que l'on veut exposer un port
 
 ## Utilisation des builds multi-stage
 Permet de s'absoudre des tout l'environnement de build dans l'image finale, et ne conserver que l'application compilée. Voici un exemple en Golang.
