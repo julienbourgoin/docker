@@ -226,3 +226,13 @@ docker history multistage/hello
 docker images
 ```
 L'image golang:alpine fait 287Mo, quand l'image finale de l'application fait 5,71Mo
+
+
+## Création d'images Docker sans Docker
+
+Les images docker répondent à une spécification OCI (https://github.com/opencontainers/image-spec).
+Il existe d'autres outils que Docker pour construire des images :
+
+- JIB : utilisable depuis Maven, Gradle ou encore en java (https://github.com/GoogleContainerTools/jib)
+- sbt : build tool for Scala, possède un plugin docker permettant la création d'images
+- ...
