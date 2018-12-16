@@ -76,8 +76,13 @@ ll alpine-modifiee
 ## Création d'une image à partir d'un Dockerfile
 ```shell
 cd build
+```
+
+On commence par rechercher une image existante :
+```shell
 docker search nginx
 ```
+ou bien en se rendant sur la registry Docker : https://hub.docker.com/_/nginx/
 
 ```Dockerfile
 FROM nginx:alpine
