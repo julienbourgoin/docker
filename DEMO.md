@@ -149,6 +149,8 @@ docker history nginx-demo
 
 `EXPOSE`: permet d'indiquer explicitement que l'on veut exposer un port
 
+`WORKDIR`: positionne un répertoie comme répertoire courant pour la suite des instructions du Dockerfile
+
 ## Utilisation des builds multi-stage
 Permet de s'absoudre des tout l'environnement de build dans l'image finale, et ne conserver que l'application compilée. Voici un exemple en Golang.
 
