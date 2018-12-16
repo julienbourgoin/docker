@@ -234,5 +234,4 @@ Les images docker répondent à une spécification OCI (https://github.com/openc
 Il existe d'autres outils que Docker pour construire des images :
 
 - JIB : utilisable depuis Maven, Gradle ou encore en java (https://github.com/GoogleContainerTools/jib)
-- sbt : build tool for Scala, possède un plugin docker permettant la création d'images
 - ...
