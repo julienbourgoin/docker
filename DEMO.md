@@ -24,6 +24,11 @@ CMD ["/hello"]
 ![Layers](/images/layers.png)
 
 # ======= Concept de CONTAINER ========
+
+Une image est un ensemble de layers en lecture seule, plus des metadonnées
+Un container est un ensemble de thread et ressources complètement isolés au moyen des namespace et cgroup linux, qui s'exécutent sur le FS d'une image surplombée par une layer en modification.
+
+
 ## Présentation des système de fichier en couche (UnionFS, AuFS, Btrfs, zfs, overlay, overlay2, devicemapper)
 
 ## Pull d'une image
@@ -37,6 +42,8 @@ docker run alpine ls /
 docker ps -a
 docker run -it alpine
 ```
+- le FS du container est isolé de celui de l'hôte
+-
 
 ## Modifications dans un container et commit dans une image
 ```shell
