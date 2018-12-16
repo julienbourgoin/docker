@@ -162,6 +162,11 @@ docker history nginx-demo
 
 `WORKDIR`: positionne un répertoie comme répertoire courant pour la suite des instructions du Dockerfile
 
+
+## Exemple d'un Dockerfile plus étofé : prometheus
+
+https://github.com/prometheus/prometheus/blob/master/Dockerfile
+
 ## Utilisation des builds multi-stage
 Permet de s'absoudre des tout l'environnement de build dans l'image finale, et ne conserver que l'application compilée. Voici un exemple en Golang.
 
