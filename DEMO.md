@@ -3,6 +3,13 @@
 docker version
 ```
 
+# Docker, un produit client / server
+
+Le client docker effectue des appels sur l'API REST exposée par le démon sur un socket unix
+```shell
+curl --unix-socket /var/run/docker.sock http::/containers/json | jq .
+```
+
 # ======= Mon premier container ========
 ```shell
 docker run hello-world
