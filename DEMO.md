@@ -10,6 +10,10 @@ Le client docker effectue des appels sur l'API REST exposée par le démon sur u
 curl --unix-socket /var/run/docker.sock http::/containers/json | jq .
 ```
 
+Le démon docker est lancé en tant que service
+```shell
+service docker status
+```
 # ======= Mon premier container ========
 ```shell
 docker run hello-world
