@@ -301,7 +301,7 @@ Contenu du fichier /tmp/user.json
 
 On importe des données dans la base mongo
 ```shell
-docker run --link mongo-server:mongodb --rm -v /tmp/user.json:/tmp/user.json mongo mongoimport --host mongodb --collection users --file /tmp/user.json
+docker run --link mongo-server:mongodb --rm -v ${PWD}/user.json:/tmp/user.json mongo mongoimport --host mongodb --collection users --file /tmp/user.json
 ```
 On vérifie la présence
 ```shell
