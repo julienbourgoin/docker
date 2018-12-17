@@ -325,4 +325,28 @@ ll /tmp/prez/data/db
 
 ## Elevation de privilèges
 
+Préparation d'un fichier secret
+```shell
+sudo su -
+echo "ceci est un contenu secret uniquement accessible a root" > /tmp/secret.txt
+chmod 600 /tmp/secret.txt
+exit
+```
+
+Nous pouvons cependant voir le contenu du fichier avec un user standard
+
+```shell
+docker run --rm -v /tmp:/tmp alpine cat /tmp/secret.txt
+```
+
 ## Attention aux images mal intentionnées !
+
+Il est primordial de respecter certaines règles lors de l'utilisation d'images publiques :
+- Utiliser en priorité les images officielles
+- Toujours regarder le Dockerfile, et s'assurer que l'image a été générée avec ce Dockerfile
+- Vérifier les ressources téléchargées via wget ou curl ou ADD
+- Privilégier les images bien notées
+- Si possible, se faire sa propre image, éventuellement en s'inspirant d'une existante
+
+
+
