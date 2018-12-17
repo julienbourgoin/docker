@@ -280,7 +280,7 @@ Il est possible de linker des containers ensembles :
 docker run --name some-mongo -d mongo:latest
 docker run -it --link some-mongo:mongo --rm mongo mongo --host mongo test
 ```
-Cela aura pour effet d'ajouter l'entrée `172.17.0.2	mongo aa0be9536323 some-mongo` dans le fichier `/etc/hosts`
+Cela aura pour effet d'ajouter l'entrée `172.17.0.2	mongo aa0be9536323 some-mongo` dans le fichier `/etc/hosts` du container client
 
 
 # Le point noir de Docker : la persistance des données
