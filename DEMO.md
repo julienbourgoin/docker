@@ -329,14 +329,14 @@ Préparation d'un fichier secret
 ```shell
 sudo su -
 echo "ceci est un contenu secret uniquement accessible a root" > /tmp/secret.txt
-chmod 600 /tmp/mon-fichier.txt
+chmod 600 /tmp/secret.txt
 exit
 ```
 
 Nous pouvons cependant voir le contenu du fichier avec un user standard
 
 ```shell
-docker run --rm -v /tmp:/tmp alpine cat /tmp/mon-fichier.txt
+docker run --rm -v /tmp:/tmp alpine cat /tmp/secret.txt
 ```
 
 ## Attention aux images mal intentionnées !
