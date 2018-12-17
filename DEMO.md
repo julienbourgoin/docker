@@ -288,3 +288,10 @@ Cela aura pour effet de TODO
 Ecrire des données dans la layer en écriture d'un container n'est pas pérenne du tout !
 
 ## Utilisation de volumes
+
+
+# Docker et la sécurité
+
+## Elevation de privilèges
+
+## Attention aux images mal intentionnées !
