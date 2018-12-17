@@ -277,10 +277,10 @@ docker run --rm --network my-bridge-network alpine ifconfig
 Il est possible de linker des containers ensembles :
 
 ```shell
-docker run --name some-mongo -d mongo:latest
-docker run -it --link some-mongo:mongo --rm mongo mongo --host mongo test
+docker run --name mongo-server -d mongo:latest
+docker run -it --link mongo-server:mongodb --rm mongo mongo --host mongodb test
 ```
-Cela aura pour effet d'ajouter l'entrée `172.17.0.2	mongo aa0be9536323 some-mongo` dans le fichier `/etc/hosts` du container client
+Cela aura pour effet d'ajouter l'entrée `172.17.0.2	mongodb aa0be9536323 mongo-server` dans le fichier `/etc/hosts` du container client
 
 
 # Le point noir de Docker : la persistance des données
@@ -288,6 +288,37 @@ Cela aura pour effet d'ajouter l'entrée `172.17.0.2	mongo aa0be9536323 some-mon
 Ecrire des données dans la layer en écriture d'un container n'est pas pérenne du tout !
 
 ## Utilisation de volumes
+
+Si l'on prend l'exemple d'une base de donnée :
+```shell
+docker run --name mongo-server -d mongo:latest
+```
+
+Contenu du fichier /tmp/user.json
+```json
+{name:"Julien"}
+```
+
+On importe des données dans la base mongo
+```shell
+docker run --link mongo-server:mongodb --rm -v /tmp/user.json:/tmp/user.json mongo mongoimport --host mongodb --collection users --file /tmp/user.json
+```
+On vérifie la présence
+```shell
+docker run -it --link mongo-server:mongodb --rm mongo mongo --host mongodb --eval 'db.getCollection("users").find({})'
+```
+
+Utilisation d'un volume docker
+```shell
+docker run --name mongo-server -v mongo-data:/data/db -d mongo
+docker volume ls
+```
+
+Utilisation d'un montage sur l'hôte
+```shell
+docker run --name mongo-server -v /tmp/prez/data/db:/data/db -d mongo
+ll /tmp/prez/data/db
+```
 
 
 # Docker et la sécurité
