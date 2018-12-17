@@ -5,15 +5,16 @@ docker version
 
 # Docker, un produit client / server
 
+Le démon docker est lancé en tant que service
+```shell
+service docker status
+```
+
 Le client docker effectue des appels sur l'API REST exposée par le démon sur un socket unix
 ```shell
 curl --unix-socket /var/run/docker.sock http::/containers/json | jq .
 ```
 
-Le démon docker est lancé en tant que service
-```shell
-service docker status
-```
 # ======= Mon premier container ========
 ```shell
 docker run hello-world
@@ -22,7 +23,6 @@ docker run hello-world
 ```shell
 docker images
 docker ps -a
-docker pull hello-world
 ```
 
 # De quoi est fait hello-world ?
