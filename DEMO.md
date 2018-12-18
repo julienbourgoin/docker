@@ -301,11 +301,11 @@ Contenu du fichier /tmp/user.json
 
 On importe des données dans la base mongo
 ```shell
-docker run --link mongo-server:mongodb --rm -v ${PWD}/user.json:/tmp/user.json mongo mongoimport --host mongodb --collection users --file /tmp/user.json
+docker run --rm --link mongo-server:mongodb -v ${PWD}/user.json:/tmp/user.json mongo mongoimport --host mongodb --collection users --file /tmp/user.json
 ```
-On vérifie la présence
+On vérifie la présence des données en base
 ```shell
-docker run -it --link mongo-server:mongodb --rm mongo mongo --host mongodb --eval 'db.getCollection("users").find({})'
+docker run --rm --link mongo-server:mongodb mongo mongo --host mongodb --eval 'db.getCollection("users").find({})'
 ```
 
 Utilisation d'un volume docker
