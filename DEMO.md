@@ -375,3 +375,7 @@ Ce sujet était extrêment complexe, mais a été grandement simplifié par la c
 docker run --privileged -d docker:dind
 ```
 https://hub.docker.com/_/docker/
+
+Mais lancer docker dans docker présente de multiples inconvénients. Pour n'en citer qu'un, le FS de type AUFS ne peut pas être lancé sur un FS AUFS, cela oblige à faire un montage du répertoire /var/lib/docker sur le FS de l'hôte, ou dans un volume docker.
+
+
