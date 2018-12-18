@@ -349,4 +349,29 @@ Il est primordial de respecter certaines règles lors de l'utilisation d'images 
 - Si possible, se faire sa propre image, éventuellement en s'inspirant d'une existante
 
 
+# Docker in Docker
 
+## Utilisation du démon docker de l'hôte depuis un container
+Même si l'on ne peut par à proprement parler de docker in docker, ce cas d'usage est très souvent utilisé.
+
+```Dockerfile
+FROM alpine:3.8
+RUN apk update && apk add --no-cache docker
+```
+
+On build l'image contenant le client docker
+```shell
+docker build -t julien:docker-client .
+```
+On peut ainsi utiliser le client docker dans un container
+```shell
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock julien:docker-client docker version
+```
+
+## Lancement d'un vrai docker dans un container
+
+Ce sujet était extrêment complexe, mais a été grandement simplifié par la communauté par la création d'un image "docker" :
+```shell
+docker run --privileged -d docker:dind
+```
+https://hub.docker.com/_/docker/
