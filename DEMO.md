@@ -370,7 +370,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock julien:docker-clien
 
 ## Lancement d'un vrai docker dans un container
 
-Ce sujet était extrêment complexe, mais a été grandement simplifié par la communauté par la création d'un image "docker" :
+Ce sujet était extrêment complexe, mais a été grandement simplifié par la communauté par la création d'une image "docker" :
 ```shell
 docker run --privileged -d docker:dind
 ```
@@ -378,4 +378,4 @@ https://hub.docker.com/_/docker/
 
 Mais lancer docker dans docker présente de multiples inconvénients. Pour n'en citer qu'un, le FS de type AUFS ne peut pas être lancé sur un FS AUFS, cela oblige à faire un montage du répertoire /var/lib/docker sur le FS de l'hôte, ou dans un volume docker.
 
-
+http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
